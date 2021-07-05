@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PortalRandkowy.API.Data;
 using PortalRandkowy.API.Models;
 
 namespace PortalRandkowy.API.Controllers
-{
+{   
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ValueController : ControllerBase
@@ -22,7 +24,7 @@ namespace PortalRandkowy.API.Controllers
             var values = _context.Values.ToList();
             return Ok(values);
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult GetValue(int id)
         {
