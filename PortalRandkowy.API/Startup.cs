@@ -16,6 +16,8 @@ using PortalRandkowy.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AutoMapper;
+using Newtonsoft;
 
 namespace PortalRandkowy.API
 {
@@ -33,13 +35,19 @@ namespace PortalRandkowy.API
         {
 
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PortalRandkowy.API", Version = "v1" });
             });
             services.AddCors();
+            services.AddAutoMapper(typeof(Startup));
+            services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IGenericRepository, GenericRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         .AddJwtBearer(options => {
                             options.TokenValidationParameters = new TokenValidationParameters
@@ -53,7 +61,7 @@ namespace PortalRandkowy.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Seed seader)
         {
             if (env.IsDevelopment())
             {
@@ -65,7 +73,7 @@ namespace PortalRandkowy.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            seader.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseAuthentication();
             app.UseAuthorization();

@@ -17,7 +17,7 @@ namespace PortalRandkowy.API.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetAll()
         {

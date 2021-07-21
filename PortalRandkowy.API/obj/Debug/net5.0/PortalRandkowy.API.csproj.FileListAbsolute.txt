@@ -80,3 +80,7 @@ F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\runtimes\win\lib\n
 F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Humanizer.dll
 F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Data\UserSeedData.json
+F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Newtonsoft.Json.dll
+F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\AutoMapper.dll
+F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
