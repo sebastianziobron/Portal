@@ -9,20 +9,43 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertifyService } from './_services/alertify.service';
+import { UserService } from './_services/user.service';
+import { UsersListComponent } from './users/users-list/users-list.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { LikesComponent } from './likes/likes.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+
+export function tokenGetter()
+{
+  return localStorage.getItem('token');
+}
 
 @NgModule({
-  declarations: [				
+  declarations: [						
     AppComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      UsersListComponent,
+      LikesComponent,
+      MessagesComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          allowedDomains: ['localhost:5000'],
+          disallowedRoutes: ['localhost:5000/auth']
+        }
+    }),
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, AlertifyService],
+  providers: [AuthService, AlertifyService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
