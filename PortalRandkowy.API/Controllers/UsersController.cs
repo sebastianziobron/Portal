@@ -27,7 +27,7 @@ namespace PortalRandkowy.API.Controllers
         public async Task<IActionResult> GetUsers()
         {
             throw new Exception("Elo mordo");
-            var users = await _repo.GetUsers();
+             var users = await _repo.GetUsers();
              var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
              return Ok(usersToReturn);
         }
