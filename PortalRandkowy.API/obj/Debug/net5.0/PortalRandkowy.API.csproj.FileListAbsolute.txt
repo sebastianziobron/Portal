@@ -84,3 +84,5 @@ F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Data\UserSeedData.
 F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Newtonsoft.Json.dll
 F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\AutoMapper.dll
 F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\CloudinaryDotNet.dll
+F:\Projekt\PortalRandkowy\PortalRandkowy.API\bin\Debug\net5.0\Microsoft.Extensions.WebEncoders.dll

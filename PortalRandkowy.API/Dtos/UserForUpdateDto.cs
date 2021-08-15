@@ -1,29 +1,8 @@
-using System;
-using System.Collections.Generic;
-using PortalRandkowy.API.Models;
-
 namespace PortalRandkowy.API.Dtos
 {
-    public class UserForDetailedDto
+    public class UserForUpdateDto
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-
-        // Podstawowe Informacje
-
-        public string Gender {get; set;}
-        public int Age {get; set;}
-        public string ZodiacSign {get; set;}
-        public DateTime Created {get; set;}
-        public DateTime LastActive {get; set;}
-        public string City {get; set;}
-        public string Country {get; set;}
-
-
-        // Dodatkowe informacje
-        // Zakładka info
-
-        public string Growth {get; set;}
+         public string Growth {get; set;}
         public string EyeColor {get; set;}
         public string HairColor {get; set;}
         public string MartialStatus {get; set;}
@@ -31,6 +10,9 @@ namespace PortalRandkowy.API.Dtos
         public string Profession {get; set;}
         public string Children {get; set;}
         public string Languages {get; set;}
+        public string Country {get; set;}
+        public string City {get; set;}
+
 
         // Zakładka o mnie
 
@@ -55,9 +37,5 @@ namespace PortalRandkowy.API.Dtos
         public string ItFeelsBestIn {get; set;}
         public string FriendeWouldDescribeMe {get; set;}
 
-        // Zakładka zdjęcia
-
-        public ICollection<PhotosForDetaliedDto> Photos {get; set;}    
-        public string PhotoUrl {get; set;}
     }
 }

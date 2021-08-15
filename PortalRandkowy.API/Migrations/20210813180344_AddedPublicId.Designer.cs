@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortalRandkowy.API.Data;
 
 namespace PortalRandkowy.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210813180344_AddedPublicId")]
+    partial class AddedPublicId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace PortalRandkowy.API.Migrations
                     b.Property<string>("FreeTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FriendeWouldDescribeMe")
+                    b.Property<string>("FriendsMouldDescribeMe")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Gender")
@@ -101,7 +103,7 @@ namespace PortalRandkowy.API.Migrations
                     b.Property<string>("Interests")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ItFeelsBestIn")
+                    b.Property<string>("ItFeelIsBestIn")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Languages")
@@ -113,7 +115,7 @@ namespace PortalRandkowy.API.Migrations
                     b.Property<string>("LookingFor")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("MakesMeLaugh")
+                    b.Property<string>("MakeMeLaugh")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("MartialStatus")

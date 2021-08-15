@@ -52,9 +52,9 @@ namespace PortalRandkowy.API.Models
 
         public string ILike {get; set;}
         public string IdoNotLike {get; set;}
-        public string MakeMeLaugh {get; set;}
-        public string ItFeelIsBestIn {get; set;}
-        public string FriendsMouldDescribeMe {get; set;}
+        public string MakesMeLaugh {get; set;}
+        public string ItFeelsBestIn {get; set;}
+        public string FriendeWouldDescribeMe {get; set;}
 
         // Zakładka zdjęcia
 
