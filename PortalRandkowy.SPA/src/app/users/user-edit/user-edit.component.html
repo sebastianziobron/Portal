@@ -128,9 +128,9 @@
             <h5>Rozśmiesza mnie</h5>
             <textarea class="form-control" name="makesMeLaugh" rows="1" [(ngModel)]="user.makesMeLaugh"></textarea>
             <h5>Najlepiej czuje się w</h5>
-            <textarea class="form-control" name="itFeelIsBestIn" rows="1" [(ngModel)]="user.itFeelIsBestIn"></textarea>
+            <textarea class="form-control" name="itFeelsBestIn" rows="1" [(ngModel)]="user.itFeelsBestIn"></textarea>
             <h5>Przyjaciele opisali by mnie</h5>
-            <textarea class="form-control" name="friendsMouldDescribeMe" rows="1" [(ngModel)]="user.friendsMouldDescribeMe"></textarea>
+            <textarea class="form-control" name="friendeWouldDescribeMe" rows="1" [(ngModel)]="user.friendeWouldDescribeMe"></textarea>
           </tab>
           <tab heading="Zdięcja">
            <app-photos [photos]="user.photos" (getUserPhotoChange)="updateMainPhoto($event)"></app-photos>

@@ -30,8 +30,8 @@ export interface User {
     iLike: string;
     idoNotLike: string;
     makesMeLaugh: string;
-    itFeelIsBestIn: string;
-    friendsMouldDescribeMe: string;
+    itFeelsBestIn: string;
+    friendeWouldDescribeMe: string;
     photos: Photo[];
     photoUrl: string;
 }
