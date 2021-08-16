@@ -18,12 +18,15 @@
       </ul>
       <div *ngIf="!loggedIn()"class="navbar-nav me-auto mb-2 mb-md-0"></div>
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
+        <span class="me-4">
+          <img src="{{ photoUrl }}" />
+        </span>
         <a class="dropdown-toggle text-light" dropdownToggle>
           Witaj {{ authService.decodeToken?.unique_name | titlecase }}
         </a>
       
         <ul class="dropdown-menu mt-4" *dropdownMenu> 
-          <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edytuj profil</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/uzytkownicy/edycja']"><i class="fa fa-user"></i>Edytuj profil</a></li>
           <div class="dropdown-divider"></div>
           <li><a class="dropdown-item" (click) = "logout()"><i class="fa fa-sign-out"></i>Wyloguj</a></li>
         </ul>

@@ -29,9 +29,6 @@ namespace PortalRandkowy.API.Controllers
            _caludinaryConfig = caludinaryConfig;
 
            Account account = new Account(
-              //"ddond06i0",
-             // "162988476747673",
-             // "DZxvIRBZV6gtxC7SfKK_auq1LxI" 
              _caludinaryConfig.Value.CloudName,
                _caludinaryConfig.Value.ApiKey,
                _caludinaryConfig.Value.ApiSecret
@@ -78,7 +75,7 @@ namespace PortalRandkowy.API.Controllers
 
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
 
-               return CreatedAtRoute(routeName: "XXX", routeValues: new {@id = photo.Id}, null);
+              return CreatedAtAction("XXX", new {@id = photo.Id}, photoToReturn);
             }
             return BadRequest("Nie mozna dodać zdjęcia");
         } 
@@ -90,6 +87,34 @@ namespace PortalRandkowy.API.Controllers
             var photoForReturn = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
 
             return Ok(photoForReturn);
+        }
+
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMainPhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repository.GetUser(userId);
+            if (!user.Photos.Any(p => p.Id == id))
+                return Unauthorized();
+
+            var photoFromRepo = await _repository.GetPhoto(id);
+
+            if (photoFromRepo.IsMain)
+                return BadRequest("To jest już główne zdjęcie");
+
+            var currentMainPhoto = await _repository.GetMainPhotoForUser(userId);
+
+            currentMainPhoto.IsMain = false;
+            photoFromRepo.IsMain = true;
+
+            if (await _repository.SaveAll())
+                return NoContent();
+
+            return BadRequest("Nie moża ustawić zdjęcia jko głownego");
+
+
         }
 
     }

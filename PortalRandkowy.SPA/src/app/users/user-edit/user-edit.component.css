@@ -1,0 +1,14 @@
+.user-tab {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+textarea {
+    width: 90%;
+}
+
+.ngx-gallery { 
+    display: inline-block; 
+    margin-bottom: 20px; 
+    margin-top: 20px;
+}

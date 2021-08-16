@@ -29,7 +29,7 @@ export interface User {
     music: string;
     iLike: string;
     idoNotLike: string;
-    makeMeLaugh: string;
+    makesMeLaugh: string;
     itFeelIsBestIn: string;
     friendsMouldDescribeMe: string;
     photos: Photo[];

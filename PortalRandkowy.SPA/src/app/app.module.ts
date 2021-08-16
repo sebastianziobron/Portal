@@ -20,6 +20,16 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { UserListResolver } from './_resolvers/user-list.resolver';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotosComponent } from './users/photos/photos.component';
+import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 
 export function tokenGetter()
 {
@@ -35,7 +45,10 @@ export function tokenGetter()
       UsersListComponent,
       LikesComponent,
       MessagesComponent,
-      UserCardComponent
+      UserCardComponent,
+      UserDetailComponent,
+      UserEditComponent,
+      PhotosComponent,
    ],
   imports: [
     BrowserModule,
@@ -50,9 +63,23 @@ export function tokenGetter()
     }),
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    NgxGalleryModule,
+    FileUploadModule,
+    //FileSelectDirective
   ],
-  providers: [AuthService, AlertifyService,UserService,AuthGuard,ErrorInterceptorProvider],
+  providers: [
+    AuthService, 
+    AlertifyService,
+    UserService,
+    AuthGuard,
+    ErrorInterceptorProvider, 
+    UserDetailResolver, 
+    UserListResolver,
+    UserEditResolver,
+    PreventUnsavedChanges
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,9 +12,12 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
 
   model: any = {};
+  photoUrl: string;
+
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router ) { }
 
   ngOnInit() {
+    this.authService.currenPhotoUrl.subscribe(photourl => this.photoUrl = photourl);
   }
 
   login(){
@@ -32,7 +35,10 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem('user');
     localStorage.removeItem('token');
+    this.authService.decodeToken = null;
+    this.authService.currentUser = null;
     this.alertify.success("Wylogowany Pomyślnie");
     this.router.navigate(['/home']);
   }
