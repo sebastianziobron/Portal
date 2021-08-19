@@ -19,7 +19,7 @@
       <div *ngIf="!loggedIn()"class="navbar-nav me-auto mb-2 mb-md-0"></div>
       <div *ngIf="loggedIn()" class="dropdown" dropdown>
         <span class="me-4">
-          <img src="{{ photoUrl }}" />
+          <img src="{{ photoUrl || '../../../../assets/user.jpg' }}" />
         </span>
         <a class="dropdown-toggle text-light" dropdownToggle>
           Witaj {{ authService.decodeToken?.unique_name | titlecase }}

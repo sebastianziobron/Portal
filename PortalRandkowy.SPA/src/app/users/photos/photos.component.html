@@ -4,7 +4,7 @@
     <div class="text-center mt-2">
       <button type="button" *ngIf="!photo.isMain" class="btn btn-sm btn-primary me-2" (click)="setMainPhoto(photo)">Głowne</button>
       <button type="button" *ngIf="photo.isMain" class="btn btn-sm btn-success me-2" [disabled]="photo.isMain">Wybrane</button>
-      <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+      <button type="button" class="btn btn-sm btn-danger" [disabled]="photo.isMain" (click)="deletePhoto(photo.id)"><i class="fa fa-trash-o"></i></button>
     </div>
   </div>
 </div>

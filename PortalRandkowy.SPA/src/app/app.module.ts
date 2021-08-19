@@ -5,7 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -30,6 +30,8 @@ import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotosComponent } from './users/photos/photos.component';
 import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimeAgoPipe } from './_pipe/time-ago-pipe';
 
 export function tokenGetter()
 {
@@ -49,6 +51,7 @@ export function tokenGetter()
       UserDetailComponent,
       UserEditComponent,
       PhotosComponent,
+      TimeAgoPipe
    ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ export function tokenGetter()
     TabsModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
-    //FileSelectDirective
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     AuthService, 

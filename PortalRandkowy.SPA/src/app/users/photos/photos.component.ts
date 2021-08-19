@@ -62,6 +62,12 @@ export class PhotosComponent implements OnInit {
           };
 
           this.photos.push(photo);
+
+          if(photo.isMain) {
+            this.authService.changeUserPhoto(photo.url);
+            this.authService.currentUser.photoUrl = photo.url;
+            localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
+          }
       }
     };
   }
@@ -79,6 +85,17 @@ export class PhotosComponent implements OnInit {
 
     }, error => {
         this.alertifi.error(error);
+    });
+  }
+
+  deletePhoto(id: number) {
+    this.alertifi.confirm('Czy jestes pewien że chcesz usunąć zdjęcie?',() => {
+      this.userService.deletePhoto(this.authService.decodeToken.nameid,id).subscribe(() => {
+        this.photos.splice(this.photos.findIndex(p => p.id === id),1);
+        this.alertifi.success("Zdjęcie zostało usunięte");
+      }, error => {
+        this.alertifi.error("Nie udało sie usunąc zdjęcia");
+      });
     });
   }
 
